@@ -42,7 +42,7 @@ const isAuthUser = async (req, res, next) => {
       req.user = await userModel.findById(decoded.userId).select("-password");
 
       if (!req.user) {
-        console.log("❌ No user found for given token");
+        console.log(" No user found for given token");
         return sendError(res, 401, "Unauthorized: User not found!");
       }
 
