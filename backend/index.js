@@ -126,6 +126,12 @@ cloudinary.config({
 });
 
 
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running successfully!");
+});
+
+
+
  const cors = require("cors");
 app.use(cors({
   origin: "http://localhost:3000",
