@@ -1,61 +1,6 @@
 const reviewsModel = require("../models/reviewsModel");
 const sendError = require("../utils/sendError");
 
-// const addReviews = async (req, res) => {
-
-//   try {
-//     const { comment, ratings } = req.body;
-//     const isReviewsExist = await reviewsModel.findOne({ user: req.user._id });
-//     if (isReviewsExist) {
-//       isReviewsExist.comment = comment;
-//       isReviewsExist.ratings = ratings;
-//       isReviewsExist.save();
-//       res.status(200).json({
-//         success: true,
-//         message: "Review Update..!!",
-//       });
-//     } else {
-//       const newReviews = await reviewsModel.create({
-//         user: req.user._id,
-//         comment,
-//         ratings,
-//       });
-//       res.status(201).json({
-//         success: true,
-//         message: "Review Added..!!",
-//       });
-//     }
-//   } catch (error) {
-//     console.log(error.message);
-//     sendError(res, 400, "Somethings Went To Wrong..!!");
-//   }
-// };
-
-//get All Reviews fro client
-
-// const addReviews = async (req, res) => {
-//   try {
-//     console.log("🔍 Incoming Review Data:", req.body); // Debugging log
-//     console.log("🔍 Checking req.user:", req.user); // Debugging log
-
-//     if (!req.user) {
-//       return res.status(401).json({ success: false, message: "Unauthorized: No user found!" });
-//     }
-
-//     const { comment, ratings } = req.body;
-
-//     if (!comment || !ratings) {
-//       return res.status(400).json({ success: false, message: "Comment and ratings are required!" });
-//     }
-
-//     const newReview = await reviewsModel.create({ user: req.user._id, comment, ratings });
-
-//     res.status(201).json({ success: true, message: "Review Added!", review: newReview });
-//   } catch (error) {
-//     console.error("❌ Error adding review:", error.message);
-//     res.status(500).json({ success: false, message: error.message || "Internal Server Error" });
-//   }
-// };
 
 const addReviews = async (req, res) => {
   try {
