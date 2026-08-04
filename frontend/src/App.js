@@ -8,7 +8,6 @@ import SignUp from "./Pages/SignUp/SignUp";
 import ForgetPassword from "./Pages/ForgetPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import Checkout from "./Pages/CheckOut/Checkout";
-import MyOrders from "./Pages/Orders/MyOrders";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserAction } from "./Redux/Actions/userAction";
 import RestPassword from "./Pages/RestPassword";
