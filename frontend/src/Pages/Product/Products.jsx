@@ -19,13 +19,12 @@ import { useParams, useSearchParams } from "react-router-dom";
 const Products = () => {
   const dispatch = useDispatch();
   const [headingCategory, setHeadingCategory] = useState("Products");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, ] = useSearchParams();
 
   //Get Product From State
   const {
     loading,
     products,
-    productsCount,
     error: productError,
   } = useSelector((state) => state.getAllProducts);
 
@@ -33,7 +32,6 @@ const Products = () => {
   const {
     loading: categoryLoading,
     Categories,
-    success,
     error: categoryError,
   } = useSelector((state) => state.getAllCategory);
 
@@ -46,19 +44,20 @@ const Products = () => {
   const [ApplyError, setApplyError] = useState();
   const [clearFilter, setClearFilter] = useState(false);
 
-  const handelCategoryClick = (e, category) => {
-    if (FilterCategory.includes(category)) {
-      const categoryIndexNum = FilterCategory.indexOf(category);
-      FilterCategory.splice(categoryIndexNum, 1);
-      e.target.classList.remove("selected-category");
-    } else {
-      FilterCategory.push(category);
-      e.target.classList.add("selected-category");
-    }
-  };
+ const handelCategoryClick = (e, category) => {
+  if (FilterCategory.includes(category)) {
+    setFilterCategory(
+      FilterCategory.filter((item) => item !== category)
+    );
+    e.target.classList.remove("selected-category");
+  } else {
+    setFilterCategory([...FilterCategory, category]);
+    e.target.classList.add("selected-category");
+  }
+};
 
   const ApplyFilterBtnClick = () => {
-    if (price || FilterCategory.length != 0) {
+    if (price || FilterCategory.length !== 0) {
       dispatch(getAllProductsAction(price, FilterCategory));
       setFilterCategory([]);
       setPrice();
@@ -115,7 +114,12 @@ const Products = () => {
       dispatch(getAllCategoryAction());
       setHeadingCategory("Products");
     }
-  }, [keyword, categoryId]);
+  }, [dispatch,
+  keyword,
+  categoryId,
+  categoryName,
+  price,
+  FilterCategory,]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api";
 import {
   CLEAR_ERRORS,
   DELETE_REVIEWS_REQUEST,
@@ -15,7 +15,7 @@ import {
 export const getAllReviewsAction = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_REVIEWS_REQUEST });
-    const { data } = await axios.get(" /api/user/get/reviews");
+    const { data } = await api.get("/user/get/reviews");
     
     console.log("✅ Reviews API Response:", data); // Debugging log
     console.log("📢 ...Dispatching Reviews to Redux:", data.reviews); // Ensure correct key usage
@@ -30,7 +30,7 @@ export const getAllReviewsAction = () => async (dispatch) => {
 export const getAllAdminReviewsAction = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_ADMIN_REVIEWS_REQUEST });
-    const { data } = await axios.get(" /api/user/get/reviews");
+    const { data } = await api.get("/user/get/reviews");
     dispatch({ type: GET_ALL_ADMIN_REVIEWS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -43,7 +43,7 @@ export const getAllAdminReviewsAction = () => async (dispatch) => {
 export const deleteReviewsAction = (reviewId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEWS_REQUEST });
-    const { data } = await axios.delete(` /api/user/admin/review/${reviewId}`);
+    const { data } = await api.delete(`/user/admin/review/${reviewId}`);
     dispatch({ type: DELETE_REVIEWS_REVIEWS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

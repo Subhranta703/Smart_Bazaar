@@ -4,7 +4,7 @@ import Header from "../../Components/Header/Header";
 import { MdClose } from "react-icons/md";
 import "./Reviews.css";
 import { useState, useRef } from "react";
-import axios from "axios";
+import api from "../../api";
 import Loader from "../../Components/Loader/Loader";
 // import { Rating } from "@material-ui/lab";
 import { Rating } from '@mui/material';
@@ -23,28 +23,7 @@ const AddReviews = () => {
   document.title = `Add Review`;
 
 
-  //Add Reviews
-  // const addReviewsHandel = async () => {
-  //   try {
-  //     if (comment.trim().length !== 0 && ratings !== 0) {
-  //       setAddLoading(true);
-  //       const { data } = await axios.post("http://localhost:8080/api/user/add/review", {
-  //         comment,
-  //         ratings,
-  //       });
 
-  //       setAddLoading(false);
-  //       setAddSuccess(data.success);
-  //       setMessage(data.message);
-  //     } else {
-  //       setValidationError("All Field Are Required..!!");
-  //     }
-  //   } catch (error) {
-  //     setAddLoading(false);
-  //     setAddSuccess(false);
-  //     setAddError(error.response.data.message);
-  //   }
-  // };
 
 const addReviewsHandel = async () => {
   try {
@@ -55,7 +34,7 @@ const addReviewsHandel = async () => {
 
       console.log("📢 Sending Review Request:", { comment, ratings });
 
-      const { data } = await axios.post("http://localhost:8080/api/user/add/review", {
+      const { data } = await api.post("/user/add/review", {
         comment,
         ratings,
       }, {

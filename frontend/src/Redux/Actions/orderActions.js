@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api";
 import {
   GET_ALL_ORDERS_ADMIN_FAIL,
   GET_ALL_ORDERS_ADMIN_REQUEST,
@@ -14,19 +14,7 @@ import {
   UPDATE_ORDER_ADMIN_SUCCESS,
 } from "../Constants/orderConstants";
 
-// export const getUsersOrdersAction = (userId) => async (dispatch) => {
-//   try {
-//     dispatch({ type: GET_USER_ORDERS_REQUEST });
-//     const { data } = await axios.get("http://localhost:8080/api/user/my/orders");
-//     dispatch({ type: GET_USER_ORDERS_SUCCESS, payload: data });
-//   } catch (error) {
-//     dispatch({
-//       type: GET_USER_ORDERS_FAIL,
-//       error: error.response.data.message,
-//     });
-//     // console.log(error);
-//   }
-// };
+
 
 export const getUsersOrdersAction = () => async (dispatch) => {
   try {
@@ -34,7 +22,7 @@ export const getUsersOrdersAction = () => async (dispatch) => {
 
     const token = localStorage.getItem("authToken"); // ✅ Ensure token is retrieved
 
-    const { data } = await axios.get(" /api/user/my/orders", {
+    const { data } = await api.get("/user/my/orders", {
       withCredentials: true,
       headers: { Authorization: `Bearer ${token}` } // ✅ Sends authentication token
     });
@@ -51,7 +39,7 @@ export const getUsersOrdersAction = () => async (dispatch) => {
 export const getUsersOrderDetailsAction = (orderId) => async (dispatch) => {
   try {
     dispatch({ type: GET_USER_ORDERS_DETAILS_REQUEST });
-    const { data } = await axios.get(`http://localhost:8080/api/user/my/order/${orderId}`);
+    const { data } = await api.get(`/user/my/order/${orderId}`);
     dispatch({ type: GET_USER_ORDERS_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -62,18 +50,6 @@ export const getUsersOrderDetailsAction = (orderId) => async (dispatch) => {
   }
 };
 
-// export const getAllOrdersAdminAction = () => async (dispatch) => {
-//   try {
-//     dispatch({ type: GET_ALL_ORDERS_ADMIN_REQUEST });
-//     const { data } = await axios.get("http://localhost:8080/api/user/admin/orders");
-//     dispatch({ type: GET_ALL_ORDERS_ADMIN_SUCCESS, payload: data });
-//   } catch (error) {
-//     dispatch({
-//       type: GET_ALL_ORDERS_ADMIN_FAIL,
-//       error: error.data.response.message,
-//     });
-//   }
-// };
 
 export const getAllOrdersAdminAction = () => async (dispatch) => {
   try {
@@ -81,7 +57,7 @@ export const getAllOrdersAdminAction = () => async (dispatch) => {
 
     const token = localStorage.getItem("authToken"); // ✅ Ensure token is retrieved
 
-    const { data } = await axios.get(" /api/user/admin/orders", {
+    const { data } = await api.get("/user/admin/orders", {
       withCredentials: true,
       headers: { Authorization: `Bearer ${token}` }
     });
@@ -100,7 +76,7 @@ export const updateOrdersAdminAction =
   (orderId, oStatus) => async (dispatch) => {
     try {
       dispatch({ type: UPDATE_ORDER_ADMIN_REQUEST });
-      const { data } = await axios.put(` /api/user/update/order/${orderId}`, {
+      const { data } = await api.put(`/user/update/order/${orderId}`, {
         oStatus,
       });
       dispatch({ type: UPDATE_ORDER_ADMIN_SUCCESS, payload: data });

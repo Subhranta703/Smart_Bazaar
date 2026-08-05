@@ -19,7 +19,7 @@ const Header = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-  const { success: logOutSuccess, message } = useSelector(
+  const { success: logOutSuccess} = useSelector(
     (state) => state.logOut
   );
   const { cartItems } = useSelector((state) => state.userCart);
@@ -36,7 +36,7 @@ const Header = () => {
   const handelSearch = (e) => {
     e.preventDefault();
     const trimKeyword = keyword.trim();
-    if (trimKeyword.length != 0) {
+    if (trimKeyword.length !== 0) {
       Navigate(`/products/${trimKeyword}`);
     } else {
       Navigate(`/products`);

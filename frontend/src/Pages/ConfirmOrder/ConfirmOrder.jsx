@@ -4,7 +4,7 @@ import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import { useSelector } from "react-redux";
 import "./ConfirmOrder.css";
-import axios from "axios";
+import api from "../../api";
 import { useState } from "react";
 import Loader from "../../Components/Loader/Loader";
 import OrderPlace from "../OrderPlace/OrderPlace";
@@ -25,7 +25,7 @@ const ConfirmOrder = ({ shippingInfo }) => {
         setOrderLoading(true);
         const token = localStorage.getItem("authToken"); // ✅ Ensure token is retrieved
     console.log("🔍 Sending Token:", token);
-        const { data } = await axios.post(`REACT_APP_API_BASE_URL/api/user/new/order`, {
+        const { data } = await api.post(`/user/new/order`, {
           cartItems,
           shippingInfo,
           userId: user._id,

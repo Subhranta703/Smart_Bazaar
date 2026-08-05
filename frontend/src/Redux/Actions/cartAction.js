@@ -1,10 +1,10 @@
-import axios from "axios";
+import api from "../../api";
 import { ADD_TO_CART, REMOVE_CART_ITEM } from "../Constants/cartConstants";
 
 export const addToCartAction = (id, quantity) => async (dispatch, getState) => {
-  const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+ 
 
-  const { data } = await axios.get(`/api/product/getSingleProduct/${id}`);
+  const { data } = await api.get(`/product/getSingleProduct/${id}`);
   //console.log("CART ACTION CALL");
   dispatch({
     type: ADD_TO_CART,
