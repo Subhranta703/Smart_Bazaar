@@ -7,12 +7,12 @@ import Loader from "../../Components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoryAction } from "../../Redux/Actions/categoryAction";
 import { getAllReviewsAction } from "../../Redux/Actions/reviewsAction";
-import axios from "axios";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper";
 import { FaStar } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import BASE_URL from "../../config";
+import api from "../../api";
 
 import featureImg1 from "../../Assets/Images/feature-img-1.png";
 import featureImg2 from "../../Assets/Images/feature-img-2.png";
@@ -34,7 +34,7 @@ const Home = () => {
   const getRecentProducts = async () => {
     try {
       setRecentLoading(true);
-      const { data } = await axios.get(`${BASE_URL}/product/recent/products`);
+      const { data } = await api.get("/product/recent/products");
       setRecentProducts(data.products);
       setRecentProductsSuccess(true);
       setRecentLoading(false);
