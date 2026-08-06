@@ -175,10 +175,7 @@ http://localhost:3000
 
 # 📸 Screenshots
 
-
-```md
-<img src="./screenshots/home.png" width="100%" />
-```
+![Smart Bazaar Home](./screenshots/home.png)
 
 ---
 

@@ -35,12 +35,7 @@ console.log("CLOUD_API_KEY:", process.env.CLOUD_API_KEY);
 console.log("CLOUD_API_SECRET_KEY:", process.env.CLOUD_API_SECRET);
 console.log("MONGO_URI:", process.env.MONGO_URI);
 
-//Config Cloudniary
-// cloudinary.config({
-//   cloud_name: process.env.CLOUD_NAME,
-//   api_key: process.env.CLOUD_API_KEY,
-//   api_secret: process.env.CLOUD_API_SECRET_KEY,
-// });
+
 
  
 cloudinary.config({
@@ -57,37 +52,41 @@ app.get("/", (req, res) => {
 
 
 
- const cors = require("cors");
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://smart-bazaar-six.vercel.app",
-    "https://smart-bazaar-six.vercel.app/" 
-  ],
-  credentials: true
-}));
+const cors = require("cors");
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://smart-bazaar-nine.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 //Load Route
 app.use("/api/user", userRoutes);
 app.use("/api/product", productRoute);
 app.use("/api/category", categoryRoute);
  app.use("/api/admin", productRoute);
-//Access Front End Static Files
-// app.use(express.static(path.join(__dirname, "../frontend/build")));
 
- 
-// ...existing code...
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: err.message || "Internal Server Error" });
 });
-// ...existing code...
-// app.listen(process.env.PORT ||8080, "127.0.0.1", () => {
-//   console.log(`Server Running At http://localhost:${process.env.PORT || 8080}`);
-// });
-app.listen(process.env.PORT || 8080,() => {
-  console.log(`Server Running At http://localhost:${process.env.PORT || 8080}`);
-});
+
+
 app.use((req, res, next) => {
   req.setTimeout(120000, () => {
     console.log("⏳ Request timed out!");
@@ -96,3 +95,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.listen(process.env.PORT || 8080,() => {
+  console.log(`Server Running At http://localhost:${process.env.PORT || 8080}`);
+});
