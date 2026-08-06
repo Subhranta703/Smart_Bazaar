@@ -1,91 +1,215 @@
-# 🛒 MERN Grocery Shop Project
+# 🛒 Smart Bazaar
 
-Welcome to the MERN Grocery Shop Project! This project is built using the MERN (MongoDB, Express, React, Node.js) stack and incorporates various features like user authentication, product listings, reviews, and more.
+<p align="center">
+  <strong>A Full-Stack MERN Grocery Shopping Platform</strong><br>
+  Built with MongoDB, Express.js, React.js, Node.js, Redux, JWT Authentication, Cloudinary, and deployed on Vercel & Render.
+</p>
 
-## 📋 Features
+---
 
-- 🚀 **Login/Sign Up**: Users can create accounts or log in to existing ones.
-- 🔐 **Forgot Password**: Forgot your password? No problem! Users can reset their passwords via email.
-- 🔒 **Update Password**: Users can change their passwords for added security.
-- 📝 **Customer Reviews**: Customers can leave reviews for products.
-- ✏️ **Update Reviews**: Customers can edit or delete their reviews.
-- 📦 **Product Lists**: Browse and view product listings.
-- 🔍 **Filter Products**: Filter products by category, price, or other attributes.
-- 🔎 **Search Products**: Search for specific products by name or keywords.
-- 🛒 **Cart Items**: Add products to the cart for purchase.
-- 🛍️ **Order Summary**: Review and confirm orders before checkout.
-- 📄 **Order Details**: View order history and details.
-- 👨‍💼 **Admin Functionality**: Special features for administrators to manage products and users.
+## 🌐 Live Demo
 
-## Installation
+- **Frontend:** https://smart-bazaar-nine.vercel.app
+- **Backend API:** https://smart-bazaar.onrender.com
 
-1. Clone the repository:
 
-   ```bash
-  
-   ```
+---
 
-2. Change into the project directory:
+# ✨ Features
 
-   ```bash
-   cd grocery-shop
-   ```
+### 👤 User Features
 
-3. Install backend dependencies:
+- 🔐 Secure Login & Registration
+- 🔑 Forgot Password & Password Reset via Email
+- 👤 User Profile Management
+- 🛍 Browse Products
+- 🔍 Search Products
+- 🗂 Filter Products by Category & Price
+- 🛒 Add Products to Cart
+- 📦 Place Orders
+- 📄 View Order History
+- ⭐ Submit Product Reviews
 
-   ```bash
-   npm install
-   ```
+### 👨‍💼 Admin Features
 
-4. Install frontend dependencies:
+- Dashboard
+- Product Management (CRUD)
+- Category Management
+- User Management
+- Order Management
+- Review Management
 
-   ```bash
-   cd frontend
-   npm install
-   ```
+---
 
-## Configuration
+# 🚀 Tech Stack
 
-1. Create a `.env` file in the `root` directory with the following environment variables:
+### Frontend
 
-   ```env
-   MONGODB_URI=your_mongodb_uri
-   JWT_SECRET_KEY = jwt_secret_key
-   JWT_RESET_PASSWORD_SECRET_KEY = jwt_reset_password_secret_key
-   COOKIE_EXPIRE = 5
-   SMPT_MAIL = smpt_mail
-   SMPT_PASSWORD = smpt_password
-   CLOUD_NAME = your_cloudinary_cloud_name
-   CLOUD_API_KEY =  your_cloudinary_api_key
-   CLOUD_API_SECRET_KEY =  your_cloudinary_api_secret
-   ```
+- React.js
+- Redux
+- React Router
+- Axios
+- CSS3
+- Material UI
+- React Icons
+- Swiper.js
 
-## Usage
+### Backend
 
-1. Start the backend:
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- bcrypt
+- Nodemailer
+- Cloudinary
 
-   ```bash
-   npm run dev
-   ```
+### Deployment
 
-2. Start the frontend:
+- Frontend → Vercel
+- Backend → Render
+- Database → MongoDB Atlas
 
-   ```bash
-   cd frontend
-   npm start
-   ```
+---
 
-3. Access the application in your web browser at `http://localhost:3000`.
+# 📂 Project Structure
 
-## Technologies
+```text
+Smart_Bazaar/
+│
+├── backend/
+│   ├── Controllers/
+│   ├── Models/
+│   ├── Routes/
+│   ├── Middleware/
+│   └── index.js
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+└── README.md
+```
 
-- 📦 **MongoDB**: A NoSQL database for storing data.
-- ⚙️ **Express.js**: A web application framework for Node.js.
-- ⚛️ **React**: A JavaScript library for building user interfaces.
-- 🚀 **Node.js**: A JavaScript runtime for server-side development.
-- 🔑 **JWT**: JSON Web Tokens for user authentication.
-- 🔒 **bcrypt**: A library for hashing user passwords.
-- 💌 **Nodemailer**: A library for sending email.
-- ☁️ **Cloudinary**: A cloud-based image and video management service.
+---
 
-Happy coding! 👩‍💻👨‍💻
+# ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/Subhranta703/Smart_Bazaar.git
+
+cd Smart_Bazaar
+```
+
+---
+
+### Install Backend
+
+```bash
+npm install
+```
+
+---
+
+### Install Frontend
+
+```bash
+cd frontend
+npm install
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file inside the backend directory.
+
+```env
+MONGODB_URI=your_mongodb_uri
+
+JWT_SECRET_KEY=your_jwt_secret
+
+JWT_RESET_PASSWORD_SECRET_KEY=your_reset_secret
+
+COOKIE_EXPIRE=5
+
+SMPT_MAIL=your_email
+
+SMPT_PASSWORD=your_password
+
+CLOUD_NAME=your_cloudinary_name
+
+CLOUD_API_KEY=your_cloudinary_key
+
+CLOUD_API_SECRET_KEY=your_cloudinary_secret
+```
+
+---
+
+# ▶️ Run Locally
+
+### Backend
+
+```bash
+npm run dev
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm start
+```
+
+Application runs at:
+
+```
+http://localhost:3000
+```
+
+---
+
+# 📸 Screenshots
+
+
+```md
+<img src="./screenshots/home.png" width="100%" />
+```
+
+---
+
+# 🎯 Future Improvements
+
+- Online Payment Integration
+- Wishlist Feature
+- Product Recommendations
+- Order Tracking
+- Email Notifications
+- Admin Analytics Dashboard
+- Responsive Admin Dashboard
+- PWA Support
+
+---
+
+# 👨‍💻 Author
+
+**Subhranta Kumar Nayak**
+
+- GitHub: https://github.com/Subhranta703
+- LinkedIn: https://www.linkedin.com/in/subhranta-kumar-nayak-8917521b6/
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
+
+It helps others discover the project and motivates future improvements.
+
+---
+
+Made with ❤️ using the MERN Stack.
